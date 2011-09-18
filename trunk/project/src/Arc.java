@@ -14,6 +14,8 @@ public class Arc
 	int timeArc;
 	int arcDistance;
 	String streetName;
+	int row;
+	int column;
 
 	/*
 	 *  this is the second constructor it creates an arc with every value as zero 
@@ -44,13 +46,32 @@ public class Arc
 		collectionPoints = collection ;
 		timeArc=time;
 		arcDistance=distance;
+		int row=0;
+		int column=0;
 
 	}
 
+	public int getRow()
+	{
+		return row;
+	}
 
+	public void setRow(int a)
+	{
+		row=a;
 
+	}
 
+	public int getcol()
+	{
+		return row;
+	}
 
+	public void setcol(int a)
+	{
+		row=a;
+
+	}
 
 	/*
 	 *  This is the method to get how many times a road was took
@@ -142,10 +163,10 @@ public class Arc
 	/*
 	 * This method figures out what the cost is to traverse an arc.
 	 */
-	public int sumCost(Arc arcName)
+	public int getSumCost()
 	{
 		int sum =0;
-		sum=arcName.getCollectionPoints()+arcName.getDistance()+arcName.getTime();
+		sum=this.getCollectionPoints()+this.getDistance()+this.getTime();
 		return sum;
 	}
 }
