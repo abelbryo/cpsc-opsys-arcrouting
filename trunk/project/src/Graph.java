@@ -29,18 +29,22 @@ public class Graph
 		vertexList= new char[MAXIMUM_INTERSECTIONS];
 		adjMatrix=new Arc[MAXIMUM_INTERSECTIONS][MAXIMUM_INTERSECTIONS];
 		countInterections=0;
-		/*for(int i=0; i<MAXIMUM_INTERSECTIONS ;  i++)
+		for(int i=0; i<MAXIMUM_INTERSECTIONS ;  i++)
 		{
 			for(int j=0; j<MAXIMUM_INTERSECTIONS; j++)
 			{
+				adjMatrix[i][j]=new Arc();
 				adjMatrix[i][j].setCollectionPoints(0);
 				adjMatrix[i][j].setDistance(0);
 				adjMatrix[i][j].setRoadTook(0);
 				adjMatrix[i][j].setTime(0);
 				adjMatrix[i][j].setTitle("0");
+				adjMatrix[i][j].setCol(i);
+				adjMatrix[i][j].setRow(j);
+				
 			}
 
-		}*/
+		}
 
 
 	}

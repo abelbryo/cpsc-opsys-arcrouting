@@ -36,7 +36,7 @@ public class FindRoute
 			}
 				arcPath[noServiced]=compareArcs(arcList);
 				//arcPath[noServiced].getRow
-			node=newNode;
+			node=arcPath[noServiced].getRow();
 			//System.out.println("node is: "+node + " newNode is: "+newNode);
 			//	System.out.println(noServiced);
 			noServiced--;			
@@ -75,11 +75,12 @@ public class FindRoute
 		 */
 		if(allTraversed(adjArray)== true)
 		{
-			for(int i=1; i<=adjArray.length;i++)
+			for(int i=1; i<adjArray.length;i++)
 			{
 				if(bestSum >adjArray[i].getSumCost())
 				{
 					bestAnswer=adjArray[i];
+					bestSum=adjArray[i].getSumCost();
 				}
 			}
 			return bestAnswer;
@@ -114,8 +115,9 @@ public class FindRoute
 	 */
 	public boolean allTraversed(Arc adjArray[])
 	{
+
 		//this for loop changes the roads serviced to null
-		for(int i=0; i<=adjArray.length; i++)
+		for(int i=0; i<adjArray.length; i++)
 		{
 			if(adjArray[i].getRoadTook() !=0 )
 			{

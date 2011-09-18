@@ -62,14 +62,14 @@ public class Arc
 
 	}
 
-	public int getcol()
+	public int getCol()
 	{
-		return row;
+		return column;
 	}
 
-	public void setcol(int a)
+	public void setCol(int a)
 	{
-		row=a;
+		column=a;
 
 	}
 
