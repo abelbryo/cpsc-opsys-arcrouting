@@ -252,44 +252,40 @@ public class Grapher
 	/*
 	 * This method provides informations about an arc.
 	 */
-	public void displayArc(int n ,int m)
-	{
-		if(adjMatrix[n][m].getTitle()!= "null")
-		{
-			//System.out.println("The number of collection points are:" + adjMatrix[n][m].getCollectionPoints() );
-			//System.out.println("The road was took "+adjMatrix[n][m].getRoadTook()+"times. ");
-			//System.out.println("It takes "+adjMatrix[n][m].getTime()+" seconds to traverse this road.");
-			//System.out.println("The road is "+adjMatrix[n][m].getDistance()+" miles long." );
-			System.out.println("the title is "+adjMatrix[n][m].getTitle());
-			System.out.println("The columns are "+adjMatrix[n][m].getCol()+"the rows are"+adjMatrix[n][m].getRow());
-			System.out.println("N is: "+n +" M is: "+m);
-			System.out.println("_______________________________________________________________________");
-		}
-	}
+//	public void displayArc(int n ,int m)
+//	{
+//		if(adjMatrix[n][m].getTitle()!= "null")
+//		{
+//			System.out.println("the title is "+adjMatrix[n][m].getTitle());
+//			System.out.println("The columns are "+adjMatrix[n][m].getCol()+"the rows are"+adjMatrix[n][m].getRow());
+//			System.out.println("N is: "+n +" M is: "+m);
+//			System.out.println("_______________________________________________________________________");
+//		}
+//	}
 
 	/*
 	 * prints out the adjacency matrix not working right now.
 	 */
-	public void displayAdjMatrix()
-	{
-		for(int i=0; i<MAXIMUM_INTERSECTIONS ;  i++)
-		{
-			for(int j=0; j<MAXIMUM_INTERSECTIONS; j++)
-			{
-				if(adjMatrix[i][j].getTitle()=="null")
-				{
-					System.out.print("0"+ " ");	
-				}
-				else
-					//System.out.print(adjMatrix[i][j].getRoadTook()+" ");
-				//	System.out.print(adjMatrix[i][j].getTitle()+" ");
-					System.out.print(adjMatrix[i][j].getTitle()+" ");
-				//System.out.print("("+adjMatrix[i][j].getRow()+","+adjMatrix[i][j].getCol()+")");
-			}
-			System.out.println("");
-
-		}
-	}
+//	public void displayAdjMatrix()
+//	{
+//		for(int i=0; i<MAXIMUM_INTERSECTIONS ;  i++)
+//		{
+//			for(int j=0; j<MAXIMUM_INTERSECTIONS; j++)
+//			{
+//				if(adjMatrix[i][j].getTitle()=="null")
+//				{
+//					System.out.print("0"+ " ");	
+//				}
+//				else
+//					//System.out.print(adjMatrix[i][j].getRoadTook()+" ");
+//				//	System.out.print(adjMatrix[i][j].getTitle()+" ");
+//					System.out.print(adjMatrix[i][j].getTitle()+" ");
+//				//System.out.print("("+adjMatrix[i][j].getRow()+","+adjMatrix[i][j].getCol()+")");
+//			}
+//			System.out.println("");
+//
+//		}
+//	}
 	public Arc getAdjMatrix(int i, int j)
 	{
 		Arc road =adjMatrix[i][j];
@@ -326,14 +322,44 @@ public class Grapher
 			}// end arc for
 		}//end string for
 		
-		for(String S : AdjList.keySet())
+		String tempSource, tempDestination;
+		for(GraphNode n : graphPoints)
 		{
-			for(Arc a :  AdjList.get(S))
+			for(String S : AdjList.keySet())
 			{
-								
-			}	
+				for(Arc A: AdjList.get(S))
+				{
+					if(n.getText().startsWith(S))
+					{
+						tempSource = S;
+						tempDestination = A.streetName;
+					}
+					else if(n.getText().startsWith(A.streetName))
+					{
+						tempSource = A.streetName;
+						tempDestination = S;
+					}
+					//Links.add(new GraphConnection(mapView, SWT.NONE, getNodeByName(tempSource,tempDestination ), getNodeByName()))
+					
+				}
+			}
 		}
 	}// close buildMapDisplay
 
+	GraphNode getNodeByName(String source, String destination)
+	{
+		for(GraphNode N: graphPoints)
+		{
+			if(N.getText().equals(source+" at "+destination) )
+			{
+				return N;
+			}
+		}
+		
+		return null;
+				
+	}
+	
+	
 	
 }
