@@ -38,7 +38,7 @@ public class Grapher
 	
 	
 	//public LinkedList<Comparable> arcList;
-	ArrayList<Arc> arcList;
+	private ArrayList<Arc> arcList;
 
 	/*
 	 * This is the constructor that makes a new object graph
